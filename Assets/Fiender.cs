@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class FiendeHANTERARE : MonoBehaviour
+public class Fiender : MonoBehaviour
 {
 
     float s = -2;
@@ -19,21 +19,24 @@ public class FiendeHANTERARE : MonoBehaviour
     void Update()
     {
         float startZpos = 16f;
-        float zPos = startZpos + (float)Math.Sin(time);
+        float zPos = startZpos + (float)Math.Sin(time) *10;
         Vector3 position = transform.position;
         position.z = zPos;
         transform.position = position;         
         
         
 
-        time += Time.deltaTime *3;
+        time += Time.deltaTime *2;
 
-        if(zPos == -8f)
+
+    }
+
+     void OnTriggerEnter(Collider other) 
+    {
+        if(other.tag == "Player")
         {
-            transform.position = new Vector3(s *-1 ,0,0);
-            
+            other.GetComponent<SpelarePoints>().AddPoints(UnityEngine.Random.Range(1,100));
+            Destroy(gameObject);
         }
-
-
     }
 }

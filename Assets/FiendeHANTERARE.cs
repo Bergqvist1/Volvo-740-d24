@@ -2,37 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FiendeSTRÖG : MonoBehaviour
+public class FiendeHanterare : MonoBehaviour
 {
     // Start is called before the first frame update
 
     public GameObject prefab;
-    public GameObject fiende;
+    public GameObject enemy;
 
 
 
     void Start()
     {
-        fiende = GameObject.FindGameObjectWithTag("Fiende");
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(fiende == null)
+        if(enemy == null)
         {
-            SpawnFiende();
-            SpawnFiende();
+            SpawnEnemy();
+            SpawnEnemy();
         }
     }
 
-    private void SpawnFiende()
+    private void SpawnEnemy()
     {
         float x = Random.Range(-10f,10f);
         float z = Random.Range(-10f,10);
         Vector3 position = new Vector3(x,1f,z);
 
-        fiende = Instantiate(prefab);
-        fiende.transform.position = position;
+        enemy = Instantiate(prefab);
+        enemy.transform.position = position;
     }
 }
