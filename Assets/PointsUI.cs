@@ -19,6 +19,6 @@ public class PointsUI : MonoBehaviour
     void Update()
     {
         int p = spelare.Points;
-        text.text = "MONCLIZZY: " + p;
+        text.text = "MONGLIZZY: " + p;
     }
 }
